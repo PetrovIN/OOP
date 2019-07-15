@@ -9,6 +9,10 @@ public class Group {
         students = new Student[size];
     }
 
+    public Group(Student [] students) {
+        this.students = students;
+    }
+
     public Student[] getStudents() {
         return students;
     }

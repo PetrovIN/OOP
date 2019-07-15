@@ -2,13 +2,13 @@ package entity;
 
 public class Student {
     private int id;
-    private int mark;
     private String name;
+    private StudentProgress studentProgress;
 
-    public Student(int id, int mark, String name) {
+    public Student(int id, String name, StudentProgress studentProgress) {
         this.id = id;
-        this.mark = mark;
         this.name = name;
+        this.studentProgress = studentProgress;
     }
 
     public int getId() {
@@ -19,19 +19,19 @@ public class Student {
         this.id = id;
     }
 
-    public int getMark() {
-        return mark;
-    }
-
-    public void setMark(int mark) {
-        this.mark = mark;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public StudentProgress getStudentProgress() {
+        return studentProgress;
+    }
+
+    public void setStudentProgress(StudentProgress studentProgress) {
+        this.studentProgress = studentProgress;
     }
 }
