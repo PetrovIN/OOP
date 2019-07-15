@@ -5,7 +5,7 @@ import entity.Student;
 
 public class MarksCalculationService implements MarksCalculationServiceImpl {
     @Override
-    public double AverageMarkGroup(Group group, String name) {
+    public double AverageMarkGroupByItem(Group group, String name) {
         int [] studentMark;
         String studentItem;
         double averageMark;
@@ -64,19 +64,33 @@ public class MarksCalculationService implements MarksCalculationServiceImpl {
         Student[] students = group.getStudents();
         for (int i = 0; i < students.length; i++) {
             if (students[i] != null) {
-                System.out.println(students[i].getStudentProgress().getItems()[i].getMarks());
-                System.out.println(AverageMarkStudent(group, i));
                 if (AverageMarkStudent(group, i) == 5.0) {
-                    count += 1;
+                    count++;
                 }
             }
-            return count;
         }
-        return 0;
+        return count;
     }
 
     @Override
-    public int AmountBadStudents(Group group, String name) {
-        return 0;
+    public int AmountBadStudentsByItem(Group group) {
+        int count = 0;
+        int [] studentMark;
+        Student [] students = group.getStudents();
+        for (int i = 0; i < students.length ; i++) {
+            if (students[i] != null) {
+                for (int j = 0; j < students[i].getStudentProgress().getItems().length; j++) {
+                    studentMark = students[i].getStudentProgress().getItems()[j].getMarks();
+                    for (int k = 0; k < studentMark.length; k++) {
+                        if (studentMark[k] == 2) {
+                            count++;
+                        }
+                        break;
+                    }
+                    break;
+                }
+            }
+        }
+        return count;
     }
 }
